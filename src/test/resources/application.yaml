@@ -1,0 +1,49 @@
+# Configuration for running connectors in bundle with connector-runtime
+
+# Cloud connection
+# zeebe.client.cloud:
+#    region=bru-2
+#    clusterId=xxx
+#    clientId=xxx
+#    clientSecret=xxx
+
+# ------------------------------------ 8.8
+camunda:
+  client:
+    mode: self-managed
+    prefer-rest-over-grpc: false
+    grpc-address: http://localhost:26500
+    request-timeout: PT25S
+    execution-threads: 32
+
+    worker:
+      defaults:
+        max-jobs-active: 32
+        stream-enabled: true
+
+    auth:
+      method: none
+
+
+    operate:
+      enabled: false
+    tasklist:
+      enabled: false
+    rest-address: http://localhost:8080
+
+
+# Don't run the connection to Operate (not an inbound connection)
+camunda.connector.polling.enabled: false
+camunda.connector.webhook.enabled: false
+spring.main.web-application-type: none
+operate.client.enabled: false
+
+# ------------------------------------ Connector secrets
+# Resolved by the EnvironmentSecretProvider via the Spring Environment.
+# Referenced in BPMN as {{secrets.googleCalendarClientId}} etc.
+# DO NOT COMMIT this file: it contains real credentials (gitignored).
+camunda.connector.secretprovider.environment.prefix: "SECRET_"
+
+SECRET_googleCalendarClientId: "<your Google Client Id>"
+SECRET_googleCalendarClientSecret: "<your Google Client Secret>"
+SECRET_googleCalendarRefreshToken: "<your RefreshToken>"

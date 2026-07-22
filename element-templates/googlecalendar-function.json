@@ -1,0 +1,1616 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "Google Calendar Outbound Connector",
+  "id": "io.camunda.connector.googlecalendar.GoogleCalendarFunction",
+  "description": "Simulate any connector",
+  "documentationRef": "https://docs.camunda.io/docs/components/modeler/web-modeler/connectors/available-connectors/template/",
+  "icon": {
+    "contents": "data:image/png;base64,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"
+  },
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "appliesTo": [
+    "bpmn:Task",
+    "bpmn:ServiceTask"
+  ],
+  "elementType": {
+    "value": "bpmn:ServiceTask"
+  },
+  "groups": [
+    {
+      "id": "sourceevent",
+      "label": "sourceevent"
+    },
+    {
+      "id": "event",
+      "label": "event"
+    },
+    {
+      "id": "authenticate",
+      "label": "authenticate"
+    },
+    {
+      "id": "Input",
+      "label": "Input"
+    },
+    {
+      "id": "Output",
+      "label": "Output"
+    }
+  ],
+  "properties": [
+    {
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      },
+      "type": "Hidden",
+      "value": "c-google-calendar-function"
+    },
+    {
+      "binding": {
+        "key": "resultVariable",
+        "type": "zeebe:taskHeader"
+      },
+      "type": "Hidden",
+      "value": "result"
+    },
+    {
+      "id": "calFunction",
+      "label": "Function",
+      "description": "Operation to perform",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Create event",
+          "value": "CREATE"
+        },
+        {
+          "name": "Delete event",
+          "value": "DELETE"
+        },
+        {
+          "name": "Delete occurrence",
+          "value": "DELETEOCCURRENCE"
+        },
+        {
+          "name": "Update event",
+          "value": "UPDATE"
+        },
+        {
+          "name": "Update occurrence",
+          "value": "UPDATEOCCURRENCE"
+        },
+        {
+          "name": "Get event",
+          "value": "GETEVENT"
+        },
+        {
+          "name": "Search events",
+          "value": "SEARCHEVENT"
+        }
+      ],
+      "binding": {
+        "name": "calFunction",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Input"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "DELETE",
+          "DELETEOCCURRENCE",
+          "UPDATE",
+          "UPDATEOCCURRENCE",
+          "GETEVENT",
+          "SEARCHEVENT"
+        ]
+      },
+      "id": "sourceCalendarId",
+      "label": "Calendar ID",
+      "description": "ID of the calendar. A event is uniq in a calendar",
+      "value": "primary",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "sourceCalendarId",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "sourceevent"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "DELETE",
+          "DELETEOCCURRENCE",
+          "UPDATE",
+          "UPDATEOCCURRENCE",
+          "GETEVENT"
+        ]
+      },
+      "id": "sourceEventId",
+      "label": "Event ID",
+      "description": "ID of the event (master series ID for recurring events)",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "sourceEventId",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "sourceevent"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "SEARCHEVENT",
+          "UPDATEOCCURRENCE",
+          "DELETEOCCURRENCE"
+        ]
+      },
+      "id": "sourceDateFrom",
+      "label": "From date",
+      "description": "Beginning of the search period, ISO-8601, e.g. \"2026-07-22T00:00:00-07:00\"",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "sourceDateFrom",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "sourceevent"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "SEARCHEVENT",
+          "UPDATEOCCURRENCE",
+          "DELETEOCCURRENCE"
+        ]
+      },
+      "id": "sourceDateTo_optional",
+      "label": "Provide To date?",
+      "description": "End of the search period, ISO-8601, e.g. \"2026-07-23T00:00:00-07:00\"",
+      "value": "false",
+      "binding": {
+        "name": "sourceDateTo_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "sourceevent"
+    },
+    {
+      "condition": {
+        "property": "sourceDateTo_optional",
+        "equals": "true"
+      },
+      "id": "sourceDateTo",
+      "label": "To date",
+      "description": "End of the search period, ISO-8601, e.g. \"2026-07-23T00:00:00-07:00\"",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "sourceDateTo",
+        "type": "zeebe:input"
+      },
+      "group": "sourceevent"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "SEARCHEVENT"
+        ]
+      },
+      "id": "sourceTimeZone_optional",
+      "label": "Provide Time zone?",
+      "description": "IANA timezone used for the dates returned in the result, e.g. \u0027Europe/Paris\u0027",
+      "value": "false",
+      "binding": {
+        "name": "sourceTimeZone_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "sourceevent"
+    },
+    {
+      "condition": {
+        "property": "sourceTimeZone_optional",
+        "equals": "true"
+      },
+      "id": "sourceTimeZone",
+      "label": "Time zone",
+      "description": "IANA timezone used for the dates returned in the result, e.g. \u0027Europe/Paris\u0027",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "sourceTimeZone",
+        "type": "zeebe:input"
+      },
+      "group": "sourceevent"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE"
+        ]
+      },
+      "id": "calendarId",
+      "label": "Calendar ID",
+      "description": "ID of the calendar where the event lives. Use \u0027primary\u0027 for the default calendar.",
+      "value": "primary",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "calendarId",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "calendarIdModify_optional",
+      "label": "Provide Move to calendar ID?",
+      "description": "Calendarid to retrieve the event. An event is unique IN calendar.",
+      "value": "false",
+      "binding": {
+        "name": "calendarIdModify_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calendarIdModify_optional",
+        "equals": "true"
+      },
+      "id": "calendarIdModify",
+      "label": "Move to calendar ID",
+      "description": "Calendarid to retrieve the event. An event is unique IN calendar.",
+      "value": "primary",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "calendarId",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "timeStart_optional",
+      "label": "Provide New start time?",
+      "description": "New time of day for the start of each matched occurrence, e.g. \"15:00\" or \"15:00:00\". The occurrence\u0027s own date is kept; leave empty to keep the current start time.",
+      "value": "false",
+      "binding": {
+        "name": "timeStart_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "timeStart_optional",
+        "equals": "true"
+      },
+      "id": "timeStart",
+      "label": "New start time",
+      "description": "New time of day for the start of each matched occurrence, e.g. \"15:00\" or \"15:00:00\". The occurrence\u0027s own date is kept; leave empty to keep the current start time.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "timeStart",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "timeEnd_optional",
+      "label": "Provide New end time?",
+      "description": "New time of day for the end of each matched occurrence, e.g. \"15:30\" or \"15:30:00\". Only applied when New start time is also set; leave empty to keep the current end time.",
+      "value": "false",
+      "binding": {
+        "name": "timeEnd_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "timeEnd_optional",
+        "equals": "true"
+      },
+      "id": "timeEnd",
+      "label": "New end time",
+      "description": "New time of day for the end of each matched occurrence, e.g. \"15:30\" or \"15:30:00\". Only applied when New start time is also set; leave empty to keep the current end time.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "timeEnd",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE"
+        ]
+      },
+      "id": "startDate",
+      "label": "Start date",
+      "description": "Start date and time of the event, for example \"2026-07-22T10:00:00-07:00\" (timezone can be given in a separate field, or with the field)",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "startDate",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "UPDATE"
+        ]
+      },
+      "id": "startDateModify_optional",
+      "label": "Provide New start date?",
+      "description": "New start date and time of the event, for example \"2026-07-22T10:00:00-07:00\". Leave empty to keep the current start date.",
+      "value": "false",
+      "binding": {
+        "name": "startDateModify_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "startDateModify_optional",
+        "equals": "true"
+      },
+      "id": "startDateModify",
+      "label": "New start date",
+      "description": "New start date and time of the event, for example \"2026-07-22T10:00:00-07:00\". Leave empty to keep the current start date.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "startDate",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE"
+        ]
+      },
+      "id": "endDate",
+      "label": "End date",
+      "description": "End date and time of the event, for example \"2026-07-22T10:00:00-07:00\" ",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "endDate",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "UPDATE"
+        ]
+      },
+      "id": "endDateModify_optional",
+      "label": "Provide New end date?",
+      "description": "New end date and time of the event. Leave empty to keep the current end date.",
+      "value": "false",
+      "binding": {
+        "name": "endDateModify_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "endDateModify_optional",
+        "equals": "true"
+      },
+      "id": "endDateModify",
+      "label": "New end date",
+      "description": "New end date and time of the event. Leave empty to keep the current end date.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "endDate",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "timeZone_optional",
+      "label": "Provide Time zone?",
+      "description": "IANA timezone, e.g. \u0027Europe/Paris\u0027. Used for timed events only.",
+      "value": "false",
+      "binding": {
+        "name": "timeZone_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "timeZone_optional",
+        "equals": "true"
+      },
+      "id": "timeZone",
+      "label": "Time zone",
+      "description": "IANA timezone, e.g. \u0027Europe/Paris\u0027. Used for timed events only.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "timeZone",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE"
+        ]
+      },
+      "id": "title",
+      "label": "Title",
+      "description": "Title of the event (summary)",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "title",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "titleModify_optional",
+      "label": "Provide New title?",
+      "description": "New title of the event (summary). Leave empty to keep the current title.",
+      "value": "false",
+      "binding": {
+        "name": "titleModify_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "titleModify_optional",
+        "equals": "true"
+      },
+      "id": "titleModify",
+      "label": "New title",
+      "description": "New title of the event (summary). Leave empty to keep the current title.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "title",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "description_optional",
+      "label": "Provide Description?",
+      "description": "Free-text description shown in the event detail view",
+      "value": "false",
+      "binding": {
+        "name": "description_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "description_optional",
+        "equals": "true"
+      },
+      "id": "description",
+      "label": "Description",
+      "description": "Free-text description shown in the event detail view",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "description",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "listAttendes_optional",
+      "label": "Provide Attendees?",
+      "description": "List of attendee email addresses",
+      "value": "false",
+      "binding": {
+        "name": "listAttendes_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "listAttendes_optional",
+        "equals": "true"
+      },
+      "id": "listAttendes",
+      "label": "Attendees",
+      "description": "List of attendee email addresses",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "listAttendes",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "createGoogleMeet",
+      "label": "Create Google Meet",
+      "description": "When true, a Google Meet video-conference link is generated",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "binding": {
+        "name": "createGoogleMeet",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE"
+        ]
+      },
+      "id": "allDay",
+      "label": "All day",
+      "description": "When true, the event spans full days with no time-of-day stored",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "binding": {
+        "name": "allDay",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "localisation_optional",
+      "label": "Provide Location?",
+      "description": "Physical location of the event, e.g. \u002710 Rue de Rivoli, Paris\u0027",
+      "value": "false",
+      "binding": {
+        "name": "localisation_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "localisation_optional",
+        "equals": "true"
+      },
+      "id": "localisation",
+      "label": "Location",
+      "description": "Physical location of the event, e.g. \u002710 Rue de Rivoli, Paris\u0027",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "localisation",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "transparency_optional",
+      "label": "Provide Transparency?",
+      "description": "Free/busy status: OPAQUE \u003d busy (default), TRANSPARENT \u003d available",
+      "value": "false",
+      "binding": {
+        "name": "transparency_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "transparency_optional",
+        "equals": "true"
+      },
+      "id": "transparency",
+      "label": "Transparency",
+      "description": "Free/busy status: OPAQUE \u003d busy (default), TRANSPARENT \u003d available",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Busy",
+          "value": "OPAQUE"
+        },
+        {
+          "name": "Available / Free",
+          "value": "TRANSPARENT"
+        }
+      ],
+      "binding": {
+        "name": "transparency",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "visibility_optional",
+      "label": "Provide Visibility?",
+      "description": "Who can see event details",
+      "value": "false",
+      "binding": {
+        "name": "visibility_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "visibility_optional",
+        "equals": "true"
+      },
+      "id": "visibility",
+      "label": "Visibility",
+      "description": "Who can see event details",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Default (inherits calendar setting)",
+          "value": "DEFAULT"
+        },
+        {
+          "name": "Public",
+          "value": "PUBLIC"
+        },
+        {
+          "name": "Private (attendees only)",
+          "value": "PRIVATE"
+        },
+        {
+          "name": "Confidential",
+          "value": "CONFIDENTIAL"
+        }
+      ],
+      "binding": {
+        "name": "visibility",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE",
+          "UPDATE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "color_optional",
+      "label": "Provide Color?",
+      "description": "Color displayed for this event in the calendar UI",
+      "value": "false",
+      "binding": {
+        "name": "color_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "color_optional",
+        "equals": "true"
+      },
+      "id": "color",
+      "label": "Color",
+      "description": "Color displayed for this event in the calendar UI",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Tomato",
+          "value": "TOMATO"
+        },
+        {
+          "name": "Flamingo",
+          "value": "FLAMINGO"
+        },
+        {
+          "name": "Tangerine",
+          "value": "TANGERINE"
+        },
+        {
+          "name": "Banana",
+          "value": "BANANA"
+        },
+        {
+          "name": "Sage",
+          "value": "SAGE"
+        },
+        {
+          "name": "Basil",
+          "value": "BASIL"
+        },
+        {
+          "name": "Peacock",
+          "value": "PEACOCK"
+        },
+        {
+          "name": "Blueberry",
+          "value": "BLUEBERRY"
+        },
+        {
+          "name": "Lavender",
+          "value": "LAVENDER"
+        },
+        {
+          "name": "Grape",
+          "value": "GRAPE"
+        },
+        {
+          "name": "Graphite",
+          "value": "GRAPHITE"
+        }
+      ],
+      "binding": {
+        "name": "color",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "CREATE"
+        ]
+      },
+      "id": "recurring",
+      "label": "Recurring event",
+      "description": "When true, the event repeats according to the recurrence fields below",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "binding": {
+        "name": "recurring",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "recurring",
+        "oneOf": [
+          "true"
+        ]
+      },
+      "id": "recurringFrequency",
+      "label": "Frequency",
+      "description": "How often the event repeats",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Daily",
+          "value": "DAILY"
+        },
+        {
+          "name": "Weekly",
+          "value": "WEEKLY"
+        },
+        {
+          "name": "Monthly",
+          "value": "MONTHLY"
+        },
+        {
+          "name": "Yearly",
+          "value": "YEARLY"
+        }
+      ],
+      "binding": {
+        "name": "recurringFrequency",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "recurring",
+        "oneOf": [
+          "true"
+        ]
+      },
+      "id": "recurringInterval",
+      "label": "Interval",
+      "description": "Repeat every N units of the chosen frequency. Default: 1",
+      "type": "Number",
+      "feel": "optional",
+      "binding": {
+        "name": "recurringInterval",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "recurring",
+        "oneOf": [
+          "true"
+        ]
+      },
+      "id": "recurringCount",
+      "label": "Count",
+      "description": "Maximum number of occurrences. Leave empty for no limit (or use Until instead)",
+      "type": "Number",
+      "feel": "optional",
+      "binding": {
+        "name": "recurringCount",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "recurring",
+        "oneOf": [
+          "true"
+        ]
+      },
+      "id": "recurringUntil",
+      "label": "Until",
+      "description": "Last date of the series (inclusive). Format: \"yyyyMMdd\" for all-day events, \"yyyyMMddTHHmmssZ\" for timed events. Ignored when Count is set",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "recurringUntil",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "recurring",
+        "oneOf": [
+          "true"
+        ]
+      },
+      "id": "recurringDaysOfWeek",
+      "label": "Days of week",
+      "description": "Days of the week for WEEKLY rules, separated by \u0027,\u0027 or \u0027;\u0027. Valid values: MO, TU, WE, TH, FR, SA, SU. Example: \"MO,WE\"",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "recurringDaysOfWeek",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "condition": {
+        "property": "calFunction",
+        "oneOf": [
+          "DELETEOCCURRENCE",
+          "UPDATEOCCURRENCE"
+        ]
+      },
+      "id": "allAfterThisOccurrence",
+      "label": "Delete all after this occurrence?",
+      "description": "When true, all occurrences on or after the given date are also deleted",
+      "value": "false",
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "binding": {
+        "name": "allAfterThisOccurrence",
+        "type": "zeebe:input"
+      },
+      "group": "event"
+    },
+    {
+      "id": "clientId",
+      "label": "Client ID",
+      "description": "OAuth2 Client ID from Google Cloud Console (APIs \u0026 Services → Credentials)",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "clientId",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "authenticate"
+    },
+    {
+      "id": "clientSecret",
+      "label": "Client secret",
+      "description": "OAuth2 Client Secret from Google Cloud Console",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "clientSecret",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "authenticate"
+    },
+    {
+      "id": "refreshToken",
+      "label": "Refresh token",
+      "description": "OAuth2 Refresh Token obtained after the user grants calendar access",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "refreshToken",
+        "type": "zeebe:input"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "authenticate"
+    },
+    {
+      "id": "applicationName_optional",
+      "label": "Provide Application name?",
+      "description": "Name shown in Google API quota dashboard. Defaults to \u0027Camunda Google Calendar Connector\u0027.",
+      "value": "false",
+      "binding": {
+        "name": "applicationName_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "authenticate"
+    },
+    {
+      "condition": {
+        "property": "applicationName_optional",
+        "equals": "true"
+      },
+      "id": "applicationName",
+      "label": "Application name",
+      "description": "Name shown in Google API quota dashboard. Defaults to \u0027Camunda Google Calendar Connector\u0027.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "name": "applicationName",
+        "type": "zeebe:input"
+      },
+      "group": "authenticate"
+    },
+    {
+      "id": "eventId_optional",
+      "label": "Saved Event ID?",
+      "description": "ID of the event. For recurring events this is the master series ID.",
+      "value": "false",
+      "binding": {
+        "name": "eventId_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Output"
+    },
+    {
+      "condition": {
+        "property": "eventId_optional",
+        "equals": "true"
+      },
+      "id": "eventId",
+      "label": "Event ID",
+      "description": "ID of the event. For recurring events this is the master series ID.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "source": "\u003d result.eventId",
+        "type": "zeebe:output"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Output"
+    },
+    {
+      "id": "calendarId_optional",
+      "label": "Saved Calendar ID?",
+      "description": "ID of the calendar the event belongs to.",
+      "value": "false",
+      "binding": {
+        "name": "calendarId_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Output"
+    },
+    {
+      "condition": {
+        "property": "calendarId_optional",
+        "equals": "true"
+      },
+      "id": "calendarId",
+      "label": "Calendar ID",
+      "description": "ID of the calendar the event belongs to.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "source": "\u003d result.calendarId",
+        "type": "zeebe:output"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Output"
+    },
+    {
+      "id": "htmlLink_optional",
+      "label": "Saved HTML link?",
+      "description": "URL to open the event in the Google Calendar web UI.",
+      "value": "false",
+      "binding": {
+        "name": "htmlLink_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Output"
+    },
+    {
+      "condition": {
+        "property": "htmlLink_optional",
+        "equals": "true"
+      },
+      "id": "htmlLink",
+      "label": "HTML link",
+      "description": "URL to open the event in the Google Calendar web UI.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "source": "\u003d result.htmlLink",
+        "type": "zeebe:output"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Output"
+    },
+    {
+      "id": "meetLink_optional",
+      "label": "Saved Meet link?",
+      "description": "Google Meet video-conference URL. Present only when a Meet link was generated.",
+      "value": "false",
+      "binding": {
+        "name": "meetLink_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Output"
+    },
+    {
+      "condition": {
+        "property": "meetLink_optional",
+        "equals": "true"
+      },
+      "id": "meetLink",
+      "label": "Meet link",
+      "description": "Google Meet video-conference URL. Present only when a Meet link was generated.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "source": "\u003d result.meetLink",
+        "type": "zeebe:output"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Output"
+    },
+    {
+      "id": "status_optional",
+      "label": "Saved Status?",
+      "description": "Event status returned by Google Calendar (e.g. \u0027confirmed\u0027, \u0027cancelled\u0027).",
+      "value": "false",
+      "binding": {
+        "name": "status_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Output"
+    },
+    {
+      "condition": {
+        "property": "status_optional",
+        "equals": "true"
+      },
+      "id": "status",
+      "label": "Status",
+      "description": "Event status returned by Google Calendar (e.g. \u0027confirmed\u0027, \u0027cancelled\u0027).",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "source": "\u003d result.status",
+        "type": "zeebe:output"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Output"
+    },
+    {
+      "id": "occurrences_optional",
+      "label": "Saved Occurrences?",
+      "description": "List of individual occurrences for a recurring event. Each entry contains occurrenceId, startDate, endDate, status.",
+      "value": "false",
+      "binding": {
+        "name": "occurrences_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Output"
+    },
+    {
+      "condition": {
+        "property": "occurrences_optional",
+        "equals": "true"
+      },
+      "id": "occurrences",
+      "label": "Occurrences",
+      "description": "List of individual occurrences for a recurring event. Each entry contains occurrenceId, startDate, endDate, status.",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "source": "\u003d result.occurrences",
+        "type": "zeebe:output"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Output"
+    },
+    {
+      "id": "listGoogleCalendarEvent_optional",
+      "label": "Saved Google Event (all fields)?",
+      "description": "Event descriptions: one entry for GETEVENT, one entry per event found for SEARCHEVENT. Each entry contains eventId, title, startDate, endDate, attendees...",
+      "value": "false",
+      "binding": {
+        "name": "listGoogleCalendarEvent_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Output"
+    },
+    {
+      "condition": {
+        "property": "listGoogleCalendarEvent_optional",
+        "equals": "true"
+      },
+      "id": "listGoogleCalendarEvent",
+      "label": "Google Event (all fields)",
+      "description": "Event descriptions: one entry for GETEVENT, one entry per event found for SEARCHEVENT. Each entry contains eventId, title, startDate, endDate, attendees...",
+      "type": "String",
+      "feel": "optional",
+      "binding": {
+        "source": "\u003d result.listGoogleCalendarEvent",
+        "type": "zeebe:output"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "group": "Output"
+    },
+    {
+      "label": "ControllerPage Expression",
+      "description": "Expression to define BPMN Errors to throw",
+      "type": "Hidden",
+      "value": "if is defined(error) then bpmnError(error.code, error.message) else null",
+      "binding": {
+        "key": "errorExpression",
+        "type": "zeebe:taskHeader"
+      }
+    }
+  ]
+}

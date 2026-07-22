@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1n6mx0f" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.49.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:process id="GoogleCalendar" name="Google Calendar" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=[]" target="listEvents" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0qzpd16</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0qzpd16" sourceRef="StartEvent_1" targetRef="Activity_0kjf9pe" />
+    <bpmn:userTask id="Activity_034zwk4" name="Review">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition externalReference="EXTERNAL" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0izj08z</bpmn:incoming>
+      <bpmn:outgoing>Flow_1cam8qy</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_10h0x7b">
+      <bpmn:incoming>Flow_1h2y06h</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1cam8qy" sourceRef="Activity_034zwk4" targetRef="Activity_1irao06" />
+    <bpmn:serviceTask id="Activity_0kjf9pe" name="Create simple event" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="c-google-calendar-function" />
+        <zeebe:ioMapping>
+          <zeebe:input source="CREATE" target="calFunction" />
+          <zeebe:input source="primary" target="calendarId" />
+          <zeebe:input source="2026-07-22T10:00:00-07:00[America/Los_Angeles]" target="startDate" />
+          <zeebe:input source="2026-07-22T12:30:00-07:00[America/Los_Angeles]" target="endDate" />
+          <zeebe:input source="false" target="timeZone_optional" />
+          <zeebe:input source="My first event" target="title" />
+          <zeebe:input source="false" target="description_optional" />
+          <zeebe:input source="false" target="listAttendes_optional" />
+          <zeebe:input source="false" target="createGoogleMeet" />
+          <zeebe:input source="false" target="allDay_optional" />
+          <zeebe:input source="false" target="localisation_optional" />
+          <zeebe:input source="false" target="transparency_optional" />
+          <zeebe:input source="false" target="visibility_optional" />
+          <zeebe:input source="false" target="color_optional" />
+          <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+          <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+          <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+          <zeebe:input source="false" target="applicationName_optional" />
+          <zeebe:input source="true" target="eventId_optional" />
+          <zeebe:input source="true" target="calendarId_optional" />
+          <zeebe:input source="false" target="htmlLink_optional" />
+          <zeebe:input source="false" target="meetLink_optional" />
+          <zeebe:input source="false" target="status_optional" />
+          <zeebe:input source="false" target="occurrences_optional" />
+          <zeebe:output source="= result.eventId" target="simpleEvent.eventId" />
+          <zeebe:output source="= result.calendarId" target="simpleEvent.calendarId" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultVariable" value="result" />
+          <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0qzpd16</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pvzlma</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:subProcess id="Activity_0hg7mul" name="Recurring event">
+      <bpmn:incoming>Flow_1jea6es</bpmn:incoming>
+      <bpmn:outgoing>Flow_0izj08z</bpmn:outgoing>
+      <bpmn:startEvent id="Event_0d4glth">
+        <bpmn:outgoing>Flow_0xzlaw8</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_0xzlaw8" sourceRef="Event_0d4glth" targetRef="Activity_1xdmsfw" />
+      <bpmn:sequenceFlow id="Flow_0arv8pb" sourceRef="Activity_1xdmsfw" targetRef="Activity_UpdateRecurringEvent" />
+      <bpmn:sequenceFlow id="Flow_121lhgo" sourceRef="Activity_UpdateRecurringEvent" targetRef="Activity_01ocs6l" />
+      <bpmn:sequenceFlow id="Flow_1ovh2aw" sourceRef="Activity_01ocs6l" targetRef="Activity_104euwx" />
+      <bpmn:endEvent id="Event_0aa6enu">
+        <bpmn:incoming>Flow_1abqffv</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1ig19uz" sourceRef="Activity_0b8rej5" targetRef="Event_0vlxmc2" />
+      <bpmn:serviceTask id="Activity_1xdmsfw" name="Create Master recurring event" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAA7EAAAOxAGVKw4bAAATlUlEQVR4nO1da5QcxXX+bnXPzM7uStqVhKQdSYuQ0APxkCAYExLJWA9jOzbWOcY2Ng52AiQiyDkmHCcxwc6xAyd2iJODX4BNEsBwco5wDOaYly3eIItHhHlq9VyhCHlZ9Na+Zqa7bn709HR1T1VPz2MlIek7p3d6prpv3bq36t5bt6p7gRM4geMZdDgqeXiDM7Yti/NciVNtC+MPR52NQEoUAPQLgTfe2sq/W7kkJUerrlFTwJPb3ElEfCkRPk+EcwHYo1XXKOMgMx6VEv914BDWrFhgO80k3nQFPLzBaW/L4m+IcC2AjmbTP5Jgxu8cF9/Y0Mu/WrUs1RSaTVXAmi3O+akU7iJgTjPpHk0gQDKw2nVx9Ydn2vubQK85eKrXuVwI/BRAulk0j3L0FB18aukse1MjRJqigGfedq4EcDsA0Qx67xcwY4fjYnkjSmhYAU9vdz5OhPtx/PT8KHoKRfrgslOtg/Xc3JACHutxpkgHrw4P8KTCIMMZAeACgg5TfHsEIBmQAEQaSLUAmTZCdizds+0d/tOVS2p3zHXJ6dv3F1pokC9PA9fajHkZAlICsMizQce0AgAwAy4ARwJFBgqAzEs8CAvf+4fLMs/VQq9mOf3tXfkLyeVbM8C8rEVoEUBKUQDBU8Cx4gwYgZAY3ghgeIooK0ACIxIYliyLhNXprPjKjZemdyehn1gB199XwOBB/iq7uLnFYjtLhKwFpAWQJsBWFOAfFZW9j4YFc3BOFHxnBIpwOVBA3lMAhlygCNreksFnbr4883K1ehKJ5Kv3FsTAIP8jSdzQIiCyFiNLhBYL8M2PTaWeHzE/6jlDX2H0d/+76frRuldXrvuNS35AMuBoFDAiCXnGXjuFi26/Il4JiSzF8BCvKjj4Jhgi1FiFkfJnqWe4HDDoKN9d5TD9Hv2uO0bjXrXML9e1SW2r/z2qLGaMHyngob++Kz8zTrZVR8Bf/kf+3IERPG8R0hkCWiygRTBaBNAiCOlS7y+PgCQafZ9CHV2MksJKfiAvgTwzhksjYKQ0KoTAi5M7aNG/fj5d0NGMldcN/1OwD+XxI5eR9itlDhjwbaG2pyD5Uev1R+zQjDa/THXQvowAoODivN2HeJVJxrEK2LWHVxRcnAegTFGtQBVcxVCW1U2Bqqxq95vo1VJPrFmKoRMtqzBJDEjmUqekkDliACNFfP3G+wutOhkbU8Q/fryIZzfKr6iEyr0evvYZLpMX9ZQiBVKdcNQw1ooKw5rwumbVZyjzfR/Dmw+UOyIHo0BF0cXEje/xZwHcGSVrVMCmPs4VHD4fFGg06P0ECQ45YBelCEipvZao07evRwNMvETlEAidywoJmerSFwZQKPLnUIsC9gzwEgmkRYkbnd1n8ip34XV75oDxo0WYzYavBNUnlGWCQPAcud6RuODbDxRav7kiPaTSMyqg6PLZACokqZohl/24n0HsjRR/snUsKqAsVFXozHARKCQ0CoBy2CQZ7b/fz90AelSaRgUIIOfXyhRoVtWyJO+7VxODQBA+l8eiBkoIFFAyw6CSEyatDyjdI1yJaUiqACa0RH8rh1tKpS5Q1rIAg4nApRFx7MGzx1yOeHwnHPaHga8MpzTyBbRHKRoVQIDjV8mlUaB+l8oIINVrlWvk8qRFoRmazGjqrChXE2FA9XtN59F0RZR2tB61PPw7l/+GIp/Sp18WDUUBIG2jYkHfqADJ6I+yVxGGljTuO2AJgIgikfCxA08S3ghXQ1HPH1I4AlLOfUjCzihNsw8QeNuL6yOEKVypL2z2M6HMx7L5B8AheXidkSrnAX4YWhqCRCh0ZKk/Ss2ogIxF24bKVZVGgOqIUQpDS32COEhDR4d8CCYbUu1a3X1xNi2JrYqrF5HrImF2NCRX1wlCJqh0YhEGpnTQ3mhVRgVkU9i0L1KZevgapxJ3hHCq1KiAWqyTzpDqyuPK6qk/hl7YzFDI8aoOuIIMoe9rH0+NRMkaFdCexk6L4EjAJsUJq4kpdb9eMyy/72mCTnr0ehNfyOVkouKMfWUAgRJSFrbp6BgV0DGGDoq93C8l5XxCqoMJzwG8CRk4pudrYAlg+kmEhacIzJgsMH4M0JYmWAIouMBQnrH3ELC9X+LVXomduxnuKO3SHD+GMCsXmNoNOyQGK/prgLAPUGbECDvh8vWMN3R0jAoY30YOQLsQnZCVKhHwKvW7q8num0LCM04W+JNzLUydQNr7MjaQsQmdbcCsKRaWnGXhnT2MR9a7eK1Xxoac1c59MLyZ+/lzBT79hzZalE0N6zZJ3POUY3QZoc4Ijf2P3JSy6B0NGXM6euWSFGzhhU0c8fx+zFt2Qgh6gfqpO7ct4LILbfzFRTamGYSvAwGYNoFw5XIbX7zQhmVVr8t07h/ZDPBnS218YXFY+ACQTVfeW3EgbI5VExQdAZbAdl27YncsWyI8bVYdMPk/KAvW6nqwrte0poGrP2pjdlf962YE4INzBNqzNm57zEHRrY/O3Bzhy0tsdLaZu0DU2qmjPJr3CS1VIjwKmIG2NHbo6qi2ZXwzM3u5fijzAL9yChJyfkWm5lgWcOXyxoSv4vTpApdcYOOeZ2rbLW5bwMXnWvjIAgtWDCu+c9WBlU/VF0SzoN7BsATQ1Sm2aPmJYzZlYzvyJc2X1O/3fn/aXV6IQfBdhxV/YGH+NHOLd+1nbNgp8e5+j9b4scCcLoEZE8lIc/FpAs9vJGx5N1msNGUs4aplNk6ZlMDwsZfnMRZz+bKy8FWzrMIStPOGi8NpaB+xCmjNYMf+Ic/n+hpVF6X9PJC/CkYKYyq6JxIuWmBp69g3yLjrGRevvi0197qYMYlwxYU2pk+oFBoR8JEFFjY9Fj8KiIBF8wS+8EeVtt4EnSB116jXqXbf7/2lyFAbggJV1oQ7W6mfgBHVlqmeX01CxTmsjy60YGvkv/sQ46YHHKzvlXCl/t5t7zJueqCI3n69NM6YLpBJmR1lawa4ermNP78wufCBylmu6nij68Gh7IBvhhSlEOntP1BFAdM66WDapt2qs4ke0cRceXECQaJufq6y9xYc4JZHHfQd4ND10cMFMJAH/vNpR9sjW1JAVydV3CMBzMsR/ukzKZw3y9zMfMzg0fIkg7aGoiGdEkqoWwErl6QgORIJRXuDylxkREj2dhT84DcOenbJEFO/eMnF1n42h3gcpre1n7G5Tz8KxrdTxT1TxxP+7uIUJozR23tmYM0bLu40OPG4EVAuU9oezZOFhEzYbJJx1QfnLPLi13JmT+UwckqlP1Ff8MZOxpvvOJg/lbDiHAt5B3jwFRcuJ5s8+djWLzG3q9KWtaQrI5YDw4yhAjCmYlkJODjMuOMpFy9slbhgtr4Pqk5V5UfdJxoRg+KYPWH537Mpsw+oqgAS6A2qokh8y2XmAICJQBxlir2UNnuKeGNnuMexcjUrJ+xr028ZEQ4N63kcKvh2l+HHzHsHgTufcbBquR2Kol7fKXHrGhe7B7jCVETh+hyUVsBAgVBZEURAozJ3RQQ5eRxpQ1AgiQIQ2C9f4P5WFSr1i/K5LwAogqWwkBPlg8sCY+U7oz2rv/y9AS77Gy/s8Op4ZpPEwhkSi+YIFF1g9QsufvmKG/gSMnPCpTawyg9DCbs5MlHzZUGhESIIB12JijS0j6oKyNrYPpg3Mxn+plZebWXAlCXy1ek1Rr16liZ+zzvArr1cqlct9zrJT5500HfAwv/2SmxOOF8ot0izrh2YGbWjlWdBFdcToa97Amn3hQIJFHDadNHzbE94SsKsDjpFEcTRXxDfx6LnwWd0cJ/WJTB7SqW9fusdiQMjZsEOFoD/XmcOdXTzloArXaGSfSxzaCZCwI6/Wmp+0r5qXuC6i1J7UxaMz8OqovMiAQ7mC1ziVfmMnsdd6392tBKuWWaH98aX8Mv1biytakdcu0zX69LNJggyO2Ag4esDhBfHlp9695xqfPVE6rIKQp/Rc2h+9z/PnCpw9VIbXeMq73huk8RrOzlUl45WPSD4bQjgda6kZsy7zhLYGHdV0vc37ARwVtnRJGAiOaNAroMwod2z2YKAtgzQPUFgYTdh7hShzQVt6pO49UmnpnpqgTcCGqHtySpt0fa4q5IqYEvAVkC8GRjXSrjlsrQ2VaGDZODpHhc/fdrBsNG1jSaCtutDDDVbBmRS+nUAH4kUYAvanE/kWMMMJkFbGomF37NL4s7nXGzsa966ZKN9PI4iEQrZNHbF0UiUnM+mUcOj+KNjEgBg9hSBLy+y8IGZerNUD2onk7x9FmFg9hRhnAMASZ2wQH8mHXWpHIoKyiU1WqekvR/wFvHndQlc/wmBl7ZJ3P6Ug4MxIWgSCEMXFASkqkinbIJIaXt5ow7DFtR3zdJUbK48kQIyacpl3KBSXxF+2NkI9o0wXuyVmNge9MWU7ZmmcVkyrlp9YKZAV2cK//xQEfuH6+fBMnQAIiBVQ/paKDGytzZCsAi5H64p2quWmZWQSAHDBZ6jW+wlQjnPEwbHxtgqXAncsqboZw/KCS9LEMa1AOecLPCxMyxM1oSh0zoJ1yyx8d1HinDqdAvGcFhTQGp+CgDAoVA1NLcnQDJa336PJwLoM9WfyAc4jFnlyZGB2fBBEKK2g4hAyrlkYN8w8HiPxNd/UcRv3nS1lm1+TmD56XbN9QX1mtut5THSThVqVFR6gig9VORcnGwTKYCAmRz+rj0fLRQl8LN1Lta8qV+l/cRZApkj/EY6nRyYAUmYEXdf0i0KRiImxdQLHQ1/aK9+2cX+ocpx0NFKOHv66D8iHte+aDbLR7GI2CflE3EtgZzvfONyIM0IQHU0/N9GHOCFbXpjP29KfeqvJZyN8ha9tbwxQT0Is+NoVlXAzY8WJ7rSywMdDnNTDVsMi/O5zvpGQCNBXPRWXed0JE6No1GV6619cl5oO+IRPgbzeomNaamTZpyAm8EzkLvtiaJRzlVdV8HFzEaNiy0Ip3cRls630DWO8J1HitgzWB9Ny9KPQ395pFbEj4AmGFWm3JZ3OQ1Au9c6SezQ3cgw/fBcC59aaOGksYHgVpxt4Y5n63sB7VTNfAAADuWTzz2SoNp6QVK4zO2tWZoE6LemVDVBLvPJjTDwyQVh4QPAojkWusfX7lEIwLmn6Keuv983ejmoRsCAeHc/zzCVV1WAZMyQsrQhqY5jgyZzaQvgqkUp2KI2WgumC8w6Sa+4zf1cF39xvbyRdqtH3jU74iShw/wE1xjx5Fu6PZ/AzEmEKxalYncoq8h1EK5cZGvDxnwRWP9281LUzQazORSNbf719xXGOrKx181veU/irV164SyeI3DdRSlMiNmjDwDndAt845Mp417+ddtcHGggITfaYOZpprJYJ3xohHPgxt6IKxm4e62Db61IazfHnt0t8G+XprFuq4uNfYw9AwyXvWXJqR0C53QLzJpsVtBgHrjvpTqf0jhMkIxuU1msAoaL6HZl8P6NetG7m3H3WgdXLdabkLQNLJ5rYfHc2uhKBn7ydBH9h+rn0OQDmNG0BwIF1ekD8g6mNWtgP/6Wi/tebl5PZQbuft7Bb7c2JqXDYbgcidy3DK8si1WABNfYJ81gAD9/2cGtTzgYLjZGazAP/Puvi3j49aPb9PhgBvoO8DxdWawJYgntTY3gyY0uevokvnSBjYUnC+1mKxMcF1jXK3HvWqfumXQUhaKeTtxzAzWDgWEH0wCsjxYZFXDbE0U81SOncdOjO8aufYzvPFTEzEkCi+YILOwW6OogrTLyDtD7HuOVHRJrN7noO+jRCO2YbSBN+Or/MVa/6KKz3dtZyQS4LvDo6xIsm5F+9BQspT6lb1TArn2cZiCn3x/ZHLa29Ets6fc03Jr2Nme1Zbx3UBdcYP8QY98g4Ggf1mLDeW3IO8Dqlxw0c6+TDo6rzygYFTAwgnZXYuIobTyrwGCejZnO0RWNj9GtwWXS/l8dowKGCpjhSraB6hvNqyGpwTCV+Y/GVqPDmutMdZhoRe9NWlatDcz6UNQYBQ3kubyUxspnPQcM53HX6X6vRicJr9VoRe9NWlatDa7k3HcfKlY8MBX32spTD5f5OR4ggZbdB3k8EN6qaBwBgqihNPQJhMGM9J7Byi0qcROxKaPIz3GJQhEVCjCaIEd6+fUjirjw5/CERk2tK+9yRYc3vzeU0OC21yYgjoHDyVyT6hqTpooXdhhNEHPlOy5PoH4QIC2rcl3YqACL8ProsnR8gQhDk8dR8he3TminNYN7uCAZ6UayLurEB8fxuW1h7Y2XpAcQgXEEnDld7LIF1oJR86OfusdFcZyfZ1J0r07OsS/ta0nTD0zlJ5AclsDuSePo57qy2PWAXCc9OJznF8v/yOcE6kI2TTd9/4v6V5ZVNemX35Y/Z/cA/1bK4/bf1TaETArr5ubEh/7lc3X8HzEAuHtlZn17hq4jVLzF8QSqwBbo62yny0zCBxI+HzAnRz9uzdA3cEIJiSEIe9ta6GN3XpWJfVdETVHlJd8fWTUwgu9xg3uFjnXYFraMb6dP/2xl5rVq19a8xnLpj/LnHxrm24suzqqPvWMXBMhsGndPHEtfu+OKTHP/n7CKv19daNnSJz87UsS1hSIWHvGc0RGGJTCStvGrsVm6+Y/nihdr+dfmDS373/ZEEc9vlvMHhnmZZJzpuOguOMe+eRIEpG3sty1sI8JLuQ7x6x9+KR37SoITOIET0OH/AV2sy9Fn4fjnAAAAAElFTkSuQmCC">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="false" target="listCalendarDescription_optional" />
+            <zeebe:input source="CREATE" target="calFunction" />
+            <zeebe:input source="primary" target="calendarId" />
+            <zeebe:input source="2026-07-22T16:00:00" target="startDate" />
+            <zeebe:input source="2026-07-22T18:00:00" target="endDate" />
+            <zeebe:input source="true" target="timeZone_optional" />
+            <zeebe:input source="America/Los_Angeles" target="timeZone" />
+            <zeebe:input source="StandUpDaily" target="title" />
+            <zeebe:input source="true" target="description_optional" />
+            <zeebe:input source="Create a 5 days stands up" target="description" />
+            <zeebe:input source="false" target="listAttendes_optional" />
+            <zeebe:input source="false" target="createGoogleMeet" />
+            <zeebe:input source="false" target="allDay_optional" />
+            <zeebe:input source="false" target="localisation_optional" />
+            <zeebe:input source="false" target="transparency_optional" />
+            <zeebe:input source="false" target="visibility_optional" />
+            <zeebe:input source="false" target="color_optional" />
+            <zeebe:input source="true" target="recurring" />
+            <zeebe:input source="DAILY" target="recurringFrequency" />
+            <zeebe:input source="=1" target="recurringInterval" />
+            <zeebe:input target="recurringCount" />
+            <zeebe:input source="2026-08-08" target="recurringUntil" />
+            <zeebe:input source="MO,TU,WE,TH,FR" target="recurringDaysOfWeek" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="true" target="eventId_optional" />
+            <zeebe:input source="true" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="true" target="occurrences_optional" />
+            <zeebe:output source="= result.eventId" target="masterEvent.eventId" />
+            <zeebe:output source="= result.calendarId" target="masterEvent.calendarId" />
+            <zeebe:output source="= result.occurrences" target="masterEvent.occurences" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0xzlaw8</bpmn:incoming>
+        <bpmn:outgoing>Flow_0arv8pb</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_UpdateRecurringEvent" name="Update one event" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="UPDATE" target="calFunction" />
+            <zeebe:input source="=masterEvent.calendarId" target="sourceCalendarId" />
+            <zeebe:input source="=masterEvent.occurences[3].occurrenceId" target="sourceEventId" />
+            <zeebe:input source="false" target="calendarIdModify_optional" />
+            <zeebe:input source="true" target="startDateModify_optional" />
+            <zeebe:input source="2026-07-24T15:00:00" target="startDate" />
+            <zeebe:input source="true" target="endDateModify_optional" />
+            <zeebe:input source="2026-07-24T16:00:00" target="endDate" />
+            <zeebe:input source="false" target="timeZone_optional" />
+            <zeebe:input source="false" target="titleModify_optional" />
+            <zeebe:input source="false" target="description_optional" />
+            <zeebe:input source="false" target="listAttendes_optional" />
+            <zeebe:input source="false" target="createGoogleMeet" />
+            <zeebe:input source="false" target="localisation_optional" />
+            <zeebe:input source="false" target="transparency_optional" />
+            <zeebe:input source="false" target="visibility_optional" />
+            <zeebe:input source="true" target="color_optional" />
+            <zeebe:input source="TANGERINE" target="color" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="false" target="eventId_optional" />
+            <zeebe:input source="false" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+            <zeebe:input source="false" target="listCalendarDescription_optional" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0arv8pb</bpmn:incoming>
+        <bpmn:outgoing>Flow_121lhgo</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_01ocs6l" name="Delete one event" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input target="calendarId" />
+            <zeebe:input source="DELETE" target="calFunction" />
+            <zeebe:input source="=masterEvent.calendarId" target="sourceCalendarId" />
+            <zeebe:input source="=masterEvent.occurences[2].occurrenceId" target="sourceEventId" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="false" target="eventId_optional" />
+            <zeebe:input source="false" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_121lhgo</bpmn:incoming>
+        <bpmn:outgoing>Flow_1ovh2aw</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_0b8rej5" name="Update occurences" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="UPDATEOCCURRENCE" target="calFunction" />
+            <zeebe:input source="=masterEvent.calendarId" target="sourceCalendarId" />
+            <zeebe:input source="=masterEvent.eventId" target="sourceEventId" />
+            <zeebe:input source="2026-07-27T00:00:00" target="sourceDateFrom" />
+            <zeebe:input source="true" target="sourceDateTo_optional" />
+            <zeebe:input source="2026-07-29T23:00:00" target="sourceDateTo" />
+            <zeebe:input source="false" target="calendarIdModify_optional" />
+            <zeebe:input source="true" target="timeStart_optional" />
+            <zeebe:input source="10:30" target="timeStart" />
+            <zeebe:input source="true" target="timeEnd_optional" />
+            <zeebe:input source="11:30" target="timeEnd" />
+            <zeebe:input source="false" target="timeZone_optional" />
+            <zeebe:input source="true" target="titleModify_optional" />
+            <zeebe:input source="Standup onsite" target="title" />
+            <zeebe:input source="true" target="description_optional" />
+            <zeebe:input source="This stand up will be on site now" target="description" />
+            <zeebe:input source="false" target="listAttendes_optional" />
+            <zeebe:input source="false" target="createGoogleMeet" />
+            <zeebe:input source="false" target="localisation_optional" />
+            <zeebe:input source="false" target="transparency_optional" />
+            <zeebe:input source="false" target="visibility_optional" />
+            <zeebe:input source="true" target="color_optional" />
+            <zeebe:input source="FLAMINGO" target="color" />
+            <zeebe:input source="false" target="allAfterThisOccurrence" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="false" target="eventId_optional" />
+            <zeebe:input source="false" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+            <zeebe:input source="false" target="listGoogleCalendarEvent_optional" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0txtn96</bpmn:incoming>
+        <bpmn:outgoing>Flow_1ig19uz</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_0txtn96" sourceRef="Activity_104euwx" targetRef="Activity_0b8rej5" />
+      <bpmn:serviceTask id="Activity_104euwx" name="Get Master" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="GETEVENT" target="calFunction" />
+            <zeebe:input source="=masterEvent.calendarId" target="sourceCalendarId" />
+            <zeebe:input source="=masterEvent.eventId" target="sourceEventId" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="true" target="eventId_optional" />
+            <zeebe:input source="true" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="true" target="status_optional" />
+            <zeebe:input source="true" target="occurrences_optional" />
+            <zeebe:input source="true" target="listGoogleCalendarEvent_optional" />
+            <zeebe:output source="= result.eventId" target="masterGetEvent.eventId" />
+            <zeebe:output source="= result.calendarId" target="masterGetEvent.calendarId" />
+            <zeebe:output source="= result.status" target="masterGetEvent.status" />
+            <zeebe:output source="= result.occurrences" target="masterGetEvent.occurences" />
+            <zeebe:output source="= result.listGoogleCalendarEvent" target="masterGetEvent.googleEvents" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1ovh2aw</bpmn:incoming>
+        <bpmn:outgoing>Flow_0txtn96</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_1abqffv" sourceRef="Activity_0zzyi83" targetRef="Event_0aa6enu" />
+      <bpmn:serviceTask id="Activity_0zzyi83" name="delete occurence" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=null" target="sourceDateTo" />
+            <zeebe:input source="DELETEOCCURRENCE" target="calFunction" />
+            <zeebe:input source="=masterEvent.calendarId" target="sourceCalendarId" />
+            <zeebe:input source="=masterEvent.eventId" target="sourceEventId" />
+            <zeebe:input source="2026-08-01T00:00:00" target="sourceDateFrom" />
+            <zeebe:input source="false" target="sourceDateTo_optional" />
+            <zeebe:input source="true" target="allAfterThisOccurrence" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="false" target="eventId_optional" />
+            <zeebe:input source="false" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+            <zeebe:input source="false" target="listGoogleCalendarEvent_optional" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0iqxbta</bpmn:incoming>
+        <bpmn:outgoing>Flow_1abqffv</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_0iqxbta" sourceRef="Event_0vlxmc2" targetRef="Activity_0zzyi83" />
+      <bpmn:intermediateCatchEvent id="Event_0vlxmc2" name="30s">
+        <bpmn:incoming>Flow_1ig19uz</bpmn:incoming>
+        <bpmn:outgoing>Flow_0iqxbta</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_1ebum7q">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT30S</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_1h2y06h" sourceRef="Activity_06wxrmp" targetRef="Event_10h0x7b" />
+    <bpmn:subProcess id="Activity_1pyuhuq" triggeredByEvent="true">
+      <bpmn:startEvent id="Event_05i82hj" name="1h">
+        <bpmn:outgoing>Flow_0s9dtkp</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_03zi602">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1H</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:startEvent>
+      <bpmn:endEvent id="Event_0117yoc">
+        <bpmn:incoming>Flow_0s9dtkp</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0s9dtkp" sourceRef="Event_05i82hj" targetRef="Event_0117yoc" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_0izj08z" sourceRef="Activity_0hg7mul" targetRef="Activity_034zwk4" />
+    <bpmn:serviceTask id="Activity_06wxrmp" name="Delete all events" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="c-google-calendar-function" />
+        <zeebe:ioMapping>
+          <zeebe:input source="primary" target="calendarId" />
+          <zeebe:input source="DELETE" target="calFunction" />
+          <zeebe:input source="=eventToDelete.calendarid" target="sourceCalendarId" />
+          <zeebe:input source="=eventToDelete.eventId" target="sourceEventId" />
+          <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+          <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+          <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+          <zeebe:input source="false" target="applicationName_optional" />
+          <zeebe:input source="false" target="eventId_optional" />
+          <zeebe:input source="false" target="calendarId_optional" />
+          <zeebe:input source="false" target="htmlLink_optional" />
+          <zeebe:input source="false" target="meetLink_optional" />
+          <zeebe:input source="false" target="status_optional" />
+          <zeebe:input source="false" target="occurrences_optional" />
+          <zeebe:input source="false" target="listGoogleCalendarEvent_optional" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultVariable" value="result" />
+          <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0rm1nxz</bpmn:incoming>
+      <bpmn:outgoing>Flow_1h2y06h</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true">
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="=listEventsToDelete" inputElement="eventToDelete" />
+        </bpmn:extensionElements>
+      </bpmn:multiInstanceLoopCharacteristics>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1flz1r4" sourceRef="Event_0nl998z" targetRef="Activity_1irao06" />
+    <bpmn:sequenceFlow id="Flow_0rm1nxz" sourceRef="Activity_1irao06" targetRef="Activity_06wxrmp" />
+    <bpmn:scriptTask id="Activity_1irao06" name="Create list to purge">
+      <bpmn:extensionElements>
+        <zeebe:script expression="=[&#10;  {&#34;calendarId&#34;:simpleEvent.calendarId, &#34;eventId&#34;:simpleEvent.eventId},&#10;  {&#34;calendarId&#34;:complexEvent.calendarId, &#34;eventId&#34;:complexEvent.eventId},&#10;  {&#34;calendarId&#34;:masterEvent.calendarId, &#34;eventId&#34;:masterEvent.eventId},&#10;   {&#34;calendarId&#34;:allDayEvent.calendarId, &#34;eventId&#34;:allDayEvent.eventId }&#10;  &#10;]" resultVariable="listEventsToDelete" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1cam8qy</bpmn:incoming>
+      <bpmn:incoming>Flow_1flz1r4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rm1nxz</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:boundaryEvent id="Event_0nl998z" name="30s" attachedToRef="Activity_034zwk4">
+      <bpmn:outgoing>Flow_1flz1r4</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0h5cy73">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:subProcess id="Activity_0je9z3f" name="Play with event">
+      <bpmn:incoming>Flow_17c28m0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jea6es</bpmn:outgoing>
+      <bpmn:startEvent id="Event_1b2hj73">
+        <bpmn:outgoing>Flow_1kor98d</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:serviceTask id="Activity_0ty6qoa" name="Create complexe event" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="true" target="createGoogleMeet_optional" />
+            <zeebe:input source="CREATE" target="calFunction" />
+            <zeebe:input source="primary" target="calendarId" />
+            <zeebe:input source="2026-07-23T09:00:00" target="startDate" />
+            <zeebe:input source="2026-07-23T11:30:00" target="endDate" />
+            <zeebe:input source="true" target="timeZone_optional" />
+            <zeebe:input source="America/Los_Angeles" target="timeZone" />
+            <zeebe:input source="Standup meeting" target="title" />
+            <zeebe:input source="true" target="description_optional" />
+            <zeebe:input source="This is the description of this event" target="description" />
+            <zeebe:input source="true" target="listAttendes_optional" />
+            <zeebe:input source="=[&#34;pierre-yves.monnet@camunda.com&#34;,&#10; &#34;peter.parker@camunda.com&#34;]" target="listAttendes" />
+            <zeebe:input source="true" target="createGoogleMeet" />
+            <zeebe:input source="false" target="allDay_optional" />
+            <zeebe:input source="true" target="localisation_optional" />
+            <zeebe:input source="275 Battery St, Suite 2600, San Francisco, CA 94111, USA" target="localisation" />
+            <zeebe:input source="true" target="transparency_optional" />
+            <zeebe:input source="OPAQUE" target="transparency" />
+            <zeebe:input source="true" target="visibility_optional" />
+            <zeebe:input source="PUBLIC" target="visibility" />
+            <zeebe:input source="true" target="color_optional" />
+            <zeebe:input source="BANANA" target="color" />
+            <zeebe:input source="false" target="recurring" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="true" target="eventId_optional" />
+            <zeebe:input source="true" target="calendarId_optional" />
+            <zeebe:input source="true" target="htmlLink_optional" />
+            <zeebe:input source="true" target="meetLink_optional" />
+            <zeebe:input source="true" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+            <zeebe:output source="= result.eventId" target="complexEvent.eventId" />
+            <zeebe:output source="= result.calendarId" target="complexEvent.calendarId" />
+            <zeebe:output source="= result.htmlLink" target="complexEvent.htmlLink" />
+            <zeebe:output source="= result.meetLink" target="complexEvent.googleMeet" />
+            <zeebe:output source="= result.status" target="complexEvent.status" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1kor98d</bpmn:incoming>
+        <bpmn:outgoing>Flow_1x27n56</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_17pxt56" name="Update event" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="false" target="listCalendarDescription_optional" />
+            <zeebe:input source="UPDATE" target="calFunction" />
+            <zeebe:input source="=complexEvent.calendarId" target="sourceCalendarId" />
+            <zeebe:input source="=complexEvent.eventId" target="sourceEventId" />
+            <zeebe:input source="false" target="calendarIdModify_optional" />
+            <zeebe:input source="true" target="startDateModify_optional" />
+            <zeebe:input source="2026-07-23T08:00:00" target="startDate" />
+            <zeebe:input source="true" target="endDateModify_optional" />
+            <zeebe:input source="2026-07-23T12:30:00" target="endDate" />
+            <zeebe:input source="false" target="timeZone_optional" />
+            <zeebe:input source="true" target="titleModify_optional" />
+            <zeebe:input source="New complex event" target="title" />
+            <zeebe:input source="true" target="description_optional" />
+            <zeebe:input source="We have to change the time" target="description" />
+            <zeebe:input source="true" target="listAttendes_optional" />
+            <zeebe:input source="=[&#34;Tony.Stark@camunda.com&#34;, &#10; &#34;Matt.Murdock@camunda.com&#34;]" target="listAttendes" />
+            <zeebe:input source="false" target="createGoogleMeet" />
+            <zeebe:input source="true" target="localisation_optional" />
+            <zeebe:input source="Baxter Building42nd Street and Madison AvenueNew York, NY 10017" target="localisation" />
+            <zeebe:input source="false" target="transparency_optional" />
+            <zeebe:input source="false" target="visibility_optional" />
+            <zeebe:input source="true" target="color_optional" />
+            <zeebe:input source="FLAMINGO" target="color" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="true" target="eventId_optional" />
+            <zeebe:input source="true" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+            <zeebe:output source="= result.eventId" target="complexEvent.eventIdModified" />
+            <zeebe:output source="= result.calendarId" target="complexEvent.calendarId" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_01oqtss</bpmn:incoming>
+        <bpmn:outgoing>Flow_1iq1m5g</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_1eff463" name="Get event" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="GETEVENT" target="calFunction" />
+            <zeebe:input source="=complexEvent.calendarId" target="sourceCalendarId" />
+            <zeebe:input source="=complexEvent.eventId" target="sourceEventId" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="false" target="eventId_optional" />
+            <zeebe:input source="false" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+            <zeebe:input source="true" target="listGoogleCalendarEvent_optional" />
+            <zeebe:output source="= result.listGoogleCalendarEvent" target="getEvents" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1iq1m5g</bpmn:incoming>
+        <bpmn:outgoing>Flow_0frs07a</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_0fyrnzi" name="Search events" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="c-google-calendar-function" />
+          <zeebe:ioMapping>
+            <zeebe:input source="SEARCHEVENT" target="calFunction" />
+            <zeebe:input source="primary" target="sourceCalendarId" />
+            <zeebe:input source="2026-07-22T10:00:00" target="sourceDateFrom" />
+            <zeebe:input source="2026-07-24T10:00:00" target="sourceDateTo" />
+            <zeebe:input source="true" target="sourceTimeZone_optional" />
+            <zeebe:input source="America/Los_Angeles" target="sourceTimeZone" />
+            <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+            <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+            <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+            <zeebe:input source="false" target="applicationName_optional" />
+            <zeebe:input source="false" target="eventId_optional" />
+            <zeebe:input source="false" target="calendarId_optional" />
+            <zeebe:input source="false" target="htmlLink_optional" />
+            <zeebe:input source="false" target="meetLink_optional" />
+            <zeebe:input source="false" target="status_optional" />
+            <zeebe:input source="false" target="occurrences_optional" />
+            <zeebe:input source="true" target="listGoogleCalendarEvent_optional" />
+            <zeebe:output source="= result.listGoogleCalendarEvent" target="searchEvents" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultVariable" value="result" />
+            <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0frs07a</bpmn:incoming>
+        <bpmn:outgoing>Flow_1esbiax</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:endEvent id="Event_1yuvfxx">
+        <bpmn:incoming>Flow_1esbiax</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1esbiax" sourceRef="Activity_0fyrnzi" targetRef="Event_1yuvfxx" />
+      <bpmn:sequenceFlow id="Flow_1kor98d" sourceRef="Event_1b2hj73" targetRef="Activity_0ty6qoa" />
+      <bpmn:sequenceFlow id="Flow_1x27n56" sourceRef="Activity_0ty6qoa" targetRef="Event_0tuug7r" />
+      <bpmn:sequenceFlow id="Flow_1iq1m5g" sourceRef="Activity_17pxt56" targetRef="Activity_1eff463" />
+      <bpmn:sequenceFlow id="Flow_0frs07a" sourceRef="Activity_1eff463" targetRef="Activity_0fyrnzi" />
+      <bpmn:sequenceFlow id="Flow_01oqtss" sourceRef="Event_0tuug7r" targetRef="Activity_17pxt56" />
+      <bpmn:intermediateCatchEvent id="Event_0tuug7r" name="30 s">
+        <bpmn:incoming>Flow_1x27n56</bpmn:incoming>
+        <bpmn:outgoing>Flow_01oqtss</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_0cpfa81">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT30S</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_0pvzlma" sourceRef="Activity_0kjf9pe" targetRef="Activity_1ve1wg2" />
+    <bpmn:sequenceFlow id="Flow_1jea6es" sourceRef="Activity_0je9z3f" targetRef="Activity_0hg7mul" />
+    <bpmn:sequenceFlow id="Flow_17c28m0" sourceRef="Activity_1ve1wg2" targetRef="Activity_0je9z3f" />
+    <bpmn:serviceTask id="Activity_1ve1wg2" name="Create All day" zeebe:modelerTemplate="io.camunda.connector.googlecalendar.GoogleCalendarFunction" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="c-google-calendar-function" />
+        <zeebe:ioMapping>
+          <zeebe:input source="CREATE" target="calFunction" />
+          <zeebe:input source="primary" target="calendarId" />
+          <zeebe:input source="2026-07-22" target="startDate" />
+          <zeebe:input source="2026-07-24" target="endDate" />
+          <zeebe:input source="true" target="timeZone_optional" />
+          <zeebe:input source="America/Los_Angeles" target="timeZone" />
+          <zeebe:input source="Chloe&#39;s birthday" target="title" />
+          <zeebe:input source="true" target="description_optional" />
+          <zeebe:input source="3 days Chloe birthday" target="description" />
+          <zeebe:input source="false" target="listAttendes_optional" />
+          <zeebe:input source="false" target="createGoogleMeet" />
+          <zeebe:input source="false" target="allDay_optional" />
+          <zeebe:input source="false" target="localisation_optional" />
+          <zeebe:input source="false" target="transparency_optional" />
+          <zeebe:input source="false" target="visibility_optional" />
+          <zeebe:input source="false" target="color_optional" />
+          <zeebe:input source="false" target="recurring" />
+          <zeebe:input source="{{secrets.googleCalendarClientId}}" target="clientId" />
+          <zeebe:input source="{{secrets.googleCalendarClientSecret}}" target="clientSecret" />
+          <zeebe:input source="{{secrets.googleCalendarRefreshToken}}" target="refreshToken" />
+          <zeebe:input source="false" target="applicationName_optional" />
+          <zeebe:input source="true" target="eventId_optional" />
+          <zeebe:input source="true" target="calendarId_optional" />
+          <zeebe:input source="false" target="htmlLink_optional" />
+          <zeebe:input source="false" target="meetLink_optional" />
+          <zeebe:input source="false" target="status_optional" />
+          <zeebe:input source="false" target="occurrences_optional" />
+          <zeebe:input source="false" target="listGoogleCalendarEvent_optional" />
+          <zeebe:output source="= result.eventId" target="allDayEvent.eventId" />
+          <zeebe:output source="= result.calendarId" target="allDayEvent.calendarId" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultVariable" value="result" />
+          <zeebe:header key="errorExpression" value="if is defined(error) then bpmnError(error.code, error.message) else null" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0pvzlma</bpmn:incoming>
+      <bpmn:outgoing>Flow_17c28m0</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:error id="Error_0wb349x" name="Bad Amount" errorCode="BAD_AMOUNT" />
+  <bpmn:error id="Error_1r3r7ff" name="Bad account" errorCode="BAD_ACCOUNT" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="GoogleCalendar">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qshhs3_di" bpmnElement="Activity_0kjf9pe">
+        <dc:Bounds x="270" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15jiyoh_di" bpmnElement="Activity_034zwk4">
+        <dc:Bounds x="2830" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_10h0x7b_di" bpmnElement="Event_10h0x7b">
+        <dc:Bounds x="3272" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0f77u1l_di" bpmnElement="Activity_06wxrmp">
+        <dc:Bounds x="3110" y="130" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09r4lar_di" bpmnElement="Activity_1irao06">
+        <dc:Bounds x="2970" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0je9z3f_di" bpmnElement="Activity_0je9z3f" isExpanded="true">
+        <dc:Bounds x="600" y="80" width="830" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1b2hj73_di" bpmnElement="Event_1b2hj73">
+        <dc:Bounds x="622" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mfepk0_di" bpmnElement="Activity_0ty6qoa">
+        <dc:Bounds x="710" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0oqgtsi_di" bpmnElement="Activity_17pxt56">
+        <dc:Bounds x="940" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kffs7d_di" bpmnElement="Activity_1eff463">
+        <dc:Bounds x="1070" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0gh40g4_di" bpmnElement="Activity_0fyrnzi">
+        <dc:Bounds x="1200" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1yuvfxx_di" bpmnElement="Event_1yuvfxx">
+        <dc:Bounds x="1352" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1j26pun_di" bpmnElement="Event_0tuug7r">
+        <dc:Bounds x="852" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="860" y="185" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1esbiax_di" bpmnElement="Flow_1esbiax">
+        <di:waypoint x="1300" y="160" />
+        <di:waypoint x="1352" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kor98d_di" bpmnElement="Flow_1kor98d">
+        <di:waypoint x="658" y="160" />
+        <di:waypoint x="710" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1x27n56_di" bpmnElement="Flow_1x27n56">
+        <di:waypoint x="810" y="160" />
+        <di:waypoint x="852" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1iq1m5g_di" bpmnElement="Flow_1iq1m5g">
+        <di:waypoint x="1040" y="160" />
+        <di:waypoint x="1070" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0frs07a_di" bpmnElement="Flow_0frs07a">
+        <di:waypoint x="1170" y="160" />
+        <di:waypoint x="1200" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01oqtss_di" bpmnElement="Flow_01oqtss">
+        <di:waypoint x="888" y="160" />
+        <di:waypoint x="940" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1yc0zca_di" bpmnElement="Activity_1ve1wg2">
+        <dc:Bounds x="430" y="130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hg7mul_di" bpmnElement="Activity_0hg7mul" isExpanded="true">
+        <dc:Bounds x="1510" y="80" width="1240" height="200" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0l4iw1k_di" bpmnElement="Activity_1xdmsfw">
+        <dc:Bounds x="1650" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dn83w6_di" bpmnElement="Activity_UpdateRecurringEvent">
+        <dc:Bounds x="1780" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0d4glth_di" bpmnElement="Event_0d4glth">
+        <dc:Bounds x="1552" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tzo78a_di" bpmnElement="Activity_01ocs6l">
+        <dc:Bounds x="1930" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zwacjd_di" bpmnElement="Activity_0b8rej5">
+        <dc:Bounds x="2250" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qyg9h5_di" bpmnElement="Activity_104euwx">
+        <dc:Bounds x="2080" y="140" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0e603xw_di" bpmnElement="Event_0vlxmc2">
+        <dc:Bounds x="2412" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2421" y="205" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lgce0l_di" bpmnElement="Activity_0zzyi83">
+        <dc:Bounds x="2490" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0aa6enu_di" bpmnElement="Event_0aa6enu">
+        <dc:Bounds x="2652" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0xzlaw8_di" bpmnElement="Flow_0xzlaw8">
+        <di:waypoint x="1588" y="180" />
+        <di:waypoint x="1650" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0arv8pb_di" bpmnElement="Flow_0arv8pb">
+        <di:waypoint x="1750" y="180" />
+        <di:waypoint x="1780" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_121lhgo_di" bpmnElement="Flow_121lhgo">
+        <di:waypoint x="1880" y="180" />
+        <di:waypoint x="1930" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ovh2aw_di" bpmnElement="Flow_1ovh2aw">
+        <di:waypoint x="2030" y="180" />
+        <di:waypoint x="2080" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ig19uz_di" bpmnElement="Flow_1ig19uz">
+        <di:waypoint x="2350" y="180" />
+        <di:waypoint x="2412" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0txtn96_di" bpmnElement="Flow_0txtn96">
+        <di:waypoint x="2180" y="180" />
+        <di:waypoint x="2250" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1abqffv_di" bpmnElement="Flow_1abqffv">
+        <di:waypoint x="2590" y="180" />
+        <di:waypoint x="2652" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iqxbta_di" bpmnElement="Flow_0iqxbta">
+        <di:waypoint x="2448" y="180" />
+        <di:waypoint x="2490" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1tk50n8_di" bpmnElement="Activity_1pyuhuq" isExpanded="true">
+        <dc:Bounds x="2950" y="300" width="350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1s9j7rs_di" bpmnElement="Event_05i82hj">
+        <dc:Bounds x="2990" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3002" y="425" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0117yoc_di" bpmnElement="Event_0117yoc">
+        <dc:Bounds x="3082" y="382" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0s9dtkp_di" bpmnElement="Flow_0s9dtkp">
+        <di:waypoint x="3026" y="400" />
+        <di:waypoint x="3082" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1u7v2cq_di" bpmnElement="Event_0nl998z">
+        <dc:Bounds x="2852" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2836" y="223" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0qzpd16_di" bpmnElement="Flow_0qzpd16">
+        <di:waypoint x="188" y="170" />
+        <di:waypoint x="270" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cam8qy_di" bpmnElement="Flow_1cam8qy">
+        <di:waypoint x="2930" y="170" />
+        <di:waypoint x="2970" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h2y06h_di" bpmnElement="Flow_1h2y06h">
+        <di:waypoint x="3210" y="170" />
+        <di:waypoint x="3272" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0izj08z_di" bpmnElement="Flow_0izj08z">
+        <di:waypoint x="2750" y="170" />
+        <di:waypoint x="2830" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1flz1r4_di" bpmnElement="Flow_1flz1r4">
+        <di:waypoint x="2870" y="228" />
+        <di:waypoint x="2870" y="248" />
+        <di:waypoint x="2940" y="248" />
+        <di:waypoint x="2940" y="200" />
+        <di:waypoint x="2970" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rm1nxz_di" bpmnElement="Flow_0rm1nxz">
+        <di:waypoint x="3070" y="180" />
+        <di:waypoint x="3090" y="180" />
+        <di:waypoint x="3090" y="170" />
+        <di:waypoint x="3110" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pvzlma_di" bpmnElement="Flow_0pvzlma">
+        <di:waypoint x="370" y="170" />
+        <di:waypoint x="430" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jea6es_di" bpmnElement="Flow_1jea6es">
+        <di:waypoint x="1430" y="180" />
+        <di:waypoint x="1510" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17c28m0_di" bpmnElement="Flow_17c28m0">
+        <di:waypoint x="530" y="170" />
+        <di:waypoint x="600" y="170" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
