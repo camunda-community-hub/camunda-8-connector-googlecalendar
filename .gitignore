@@ -1,0 +1,6 @@
+py-application.yaml
+/src/test/resources/application-py.yaml
+/doc/Functions.md
+/target/
+/dependency-reduced-pom.xml
+/.idea/
