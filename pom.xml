@@ -8,7 +8,7 @@
     <artifactId>connector-google-calendar</artifactId>
     <packaging>jar</packaging>
     <!-- 1.0.0 -->
-    <!-- 1.1.0 Normalize groupe id and artefact id -->
+    <!-- 1.1.0 Normalize groupId and artefact id -->
     <version>1.1.0</version>
 
     <properties>
